@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -32,7 +33,8 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+        $technologies = Technology::all();
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -58,6 +60,10 @@ class ProjectController extends Controller
         $newProject->slug = Str::slug($formData['title'], '-');
 
         $newProject->save();
+
+        if(array_key_exists('technologies', $formData)){
+            $newProject->technologies()->attach($formData['technologies']);
+        }
 
 
 
@@ -131,7 +137,7 @@ class ProjectController extends Controller
         $formData = $request->all();
 
         $validator = Validator::make($formData, [
-            'title' => "required|max:255|unique:projects,title,".$formData,
+            'title' => 'required|max:255',
             'repo' => 'required|max:255',
             'description' => 'required|max:1000',
             'languages' => 'required|max:500',
