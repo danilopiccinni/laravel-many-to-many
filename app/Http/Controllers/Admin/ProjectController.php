@@ -147,7 +147,6 @@ class ProjectController extends Controller
             'title' => 'required|max:255',
             'repo' => 'required|max:255',
             'description' => 'required|max:1000',
-            'languages' => 'required|max:500',
             'thumb' => 'required|max:500|active_url|url',
             'type_id' => 'nullable|exists:types,id',
         ],[
