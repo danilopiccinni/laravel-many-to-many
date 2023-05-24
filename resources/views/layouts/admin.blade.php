@@ -1,8 +1,10 @@
 <?php
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Technology;
     $projects = Project::all();
     $types = Type::all();
+    $technologies = Technology::all();
 
     function giveActive($route,) {
         if($route == URL::full()) {
@@ -135,6 +137,7 @@ use App\Models\Type;
                             </li>
                             @endforeach
                         </ul>
+
                         <strong>Sezione tipologia</strong>
                         <a class="list-group-item list-group-item-action {{giveActive(route('admin.types.index'))}}" href="{{ route('admin.types.index') }}">{{__('Lista tipologie')}} ({{count($types)}})</a>
                         <a class="list-group-item list-group-item-action {{giveActive(route('admin.types.create'))}}" href="{{route('admin.types.create') }}">{{ __('Crea nuova tipologia') }}</a>
@@ -144,7 +147,20 @@ use App\Models\Type;
                                 <a class="list-group-item list-group-item-action {{giveActive(route('admin.types.show', $type))}}" href="{{ route('admin.types.show', $type) }}">{{$type->name}}</a>
                             </li>
                             @endforeach
-                        </ul>    
+                        </ul>  
+                        
+                        <strong>Sezione tecnologia</strong>
+                        <a class="list-group-item list-group-item-action {{giveActive(route('admin.technologies.index'))}}" href="{{ route('admin.technologies.index') }}">{{__('Lista tecnologie')}} ({{count($technologies)}})</a>
+                        <a class="list-group-item list-group-item-action {{giveActive(route('admin.technologies.create'))}}" href="{{route('admin.technologies.create') }}">{{ __('Crea nuova tecnologia') }}</a>
+                        <ul>
+                            @foreach($technologies as $technology)
+                            <li class="nav-link">
+                                <a class="list-group-item list-group-item-action {{giveActive(route('admin.technologies.show', $technology))}}" href="{{ route('admin.technologies.show', $technology) }}">{{$technology->name}}</a>
+                            </li>
+                            @endforeach
+                        </ul>  
+
+
                       </div>
                 </div>       
             </aside>
