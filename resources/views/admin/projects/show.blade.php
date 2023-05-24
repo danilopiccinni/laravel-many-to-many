@@ -3,6 +3,16 @@
 
 @section('content')
 
+    <div class="d-flex justify-content-center gap-5 my-5">
+        <a class="btn btn-primary" href="{{route('admin.projects.edit', $project)}}">modifica</a>
+        
+                    <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Elimina
+        </button>
+        
+    </div>
+
     <section class="section-admin-show">
         <section>
             <div class="image py-5">
@@ -24,6 +34,13 @@
         <section class="my-5">
             
             <div class="container">
+
+                <div>
+                    <strong>Tecnologia:</strong>
+                    @foreach ($technologies as $technology)
+                    <span class="badge" style=" background-color: {{$technology->color}}">{{$technology->name}}</span>
+                    @endforeach
+                </div>
 
 
                 <p>Tipologia: {{$project->type?->name}}</p>
@@ -171,32 +188,32 @@
                 Elimina
               </button>
               
-              <!-- Modal -->
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      Sicuro di voler eliminare il progetto: {{$project->title}}
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <form action="{{ route('admin.projects.destroy' , $project) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger" type="submit">Elimina</button>
-                    </form>
-                    </div>
+        </div>
+            
+            
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Sicuro di voler eliminare il progetto: {{$project->title}}
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <form action="{{ route('admin.projects.destroy' , $project) }}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button class="btn btn-danger" type="submit">Elimina</button>
+                  </form>
                   </div>
                 </div>
               </div>
             </div>
-            
-
-
 
 
 
