@@ -7,17 +7,29 @@
         <ul>
             @foreach ($projects as $project)
                 <li>
-                    <a class="cont-card" href="{{ route('admin.projects.show', $project) }}">
-                      <div class="card mb-3" style="width: 70%;">
+                    <a style="color: black ; text-decoration: none" class="cont-card" href="{{ route('admin.projects.show', $project) }}">
+                      <div class="card mb-1" >
                         <div class="row g-0">
-                          <div class="col-md-4">
+                          <div class="col-md-4 d-flex align-items-center">
                             <img src="{{$project->thumb}}" class="img-fluid rounded-start" alt="...">
                           </div>
-                          <div class="col-md-8">
+                          <div class="col-md-4 ">
                             <div class="card-body">
-                              <h5 class="card-title">{{ $project->title }}</h5>
-                              <p class="card-text">{{$project->description}}</p>
-                              <p class="card-text"><small class="text-body-secondary">{{ $project->languages }}</small></p>
+                              <span class="text-end">Titolo:</span>
+                              <h5 class="card-title text-center">{{ $project->title }}</h5>
+                              <span>Tecnologie: </span>
+                              @foreach($project->technologies as $tecnology)
+                                <p class="card-title text-center">{{ $tecnology->name}}</p>
+                              @endforeach
+                              <span>Tipologia:</span>
+                              <p class="text-center">{{$project->type?->name}}</p>
+
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="card-body">
+                              <span>Descrizione: </span>
+                              <p class="card-text text-center">{{$project->description}}</p>
                             </div>
                           </div>
                         </div>
