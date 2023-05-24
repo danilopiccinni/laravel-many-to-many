@@ -66,16 +66,6 @@
             </div>
     
             <div class="mb-2 form-check" >
-                <label class="form-label" for="languages">languages</label>
-                <input class="form-control @error('languages') is-invalid @enderror" type="text" id="languages" name="languages" value="{{old('languages')}}">
-                @error('languages')
-                <div class="invalid-feedback">
-                    <em> {{$message}} </em>
-                </div>
-                @enderror
-            </div>
-    
-            <div class="mb-2 form-check" >
                 <label class="form-label" for="thumb">thumb</label>
                 <input class="form-control @error('thumb') is-invalid @enderror" type="text" id="thumb" name="thumb" value="{{old('thumb')}}">
                 @error('thumb')

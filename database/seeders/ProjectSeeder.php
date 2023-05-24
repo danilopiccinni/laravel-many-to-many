@@ -28,7 +28,6 @@ class ProjectSeeder extends Seeder
             $newProject->title = $singleProject['title'];
             $newProject->repo = $singleProject['repo'];
             $newProject->description = $singleProject['description'];
-            $newProject->languages = $singleProject['languages'];
             $newProject->thumb = $singleProject['thumb'];
             $newProject->slug = Str::slug($singleProject['title'], '-');
 
