@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Technology;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class TechnologyController extends Controller
@@ -39,6 +40,9 @@ class TechnologyController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validatorDataForm($request);
+
         $formData = $request->all();
 
         $newTechnology = new Technology();
@@ -86,6 +90,8 @@ class TechnologyController extends Controller
      */
     public function update(Request $request, Technology $technology)
     {
+        $this->validatorDataForm($request);
+        
         $formData = $request->all();
 
         $technology->slug = Str::slug($formData['name'], '-');
@@ -106,5 +112,22 @@ class TechnologyController extends Controller
         $technology->delete();
 
         return redirect()->route('admin.technologies.index');
+    }
+
+    private function validatorDataForm($request) {
+        $formData = $request->all();
+
+        $validator = Validator::make($formData, [
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'color' => 'nullable'
+        ],[
+            'name.required' => 'Questo campo è richiesto, non puoi lasciarlo vuoto',
+            'name.max' => 'Il nome deve cotenere massimo :max caratteri',
+            'description.required' => 'Questo campo è richiesto, non puoi lasciarlo vuoto',
+        ])->validate();
+
+        return $validator;
+
     }
 }
