@@ -44,6 +44,20 @@
                 </div>
                 @enderror
             </div>
+
+
+            <div class="form-group">
+                <span>Technologia</span>
+
+                @foreach($technologies as $technology)
+                <div class="form-check">
+                    <input type="checkbox" id="technology-{{$technology->id}}" name="technologies[]" value="{{$technology->id}}" @checked($project->technologies->contains($technology))>
+                    <label for="technology-{{$technology->id}}">{{$technology->name}}</label>
+                </div>
+                @endforeach
+            </div>
+            
+
     
             <div class="mb-2 form-check" >
                 <label class="form-label" for="description">description</label>
