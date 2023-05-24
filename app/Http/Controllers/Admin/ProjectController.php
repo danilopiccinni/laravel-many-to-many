@@ -55,7 +55,6 @@ class ProjectController extends Controller
         $newProject->type_id = $formData['type_id'];
         $newProject->repo = $formData['repo'];
         $newProject->description = $formData['description'];
-        $newProject->languages = $formData['languages'];
         $newProject->thumb = $formData['thumb'];
         $newProject->slug = Str::slug($formData['title'], '-');
 
