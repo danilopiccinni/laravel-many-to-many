@@ -9,8 +9,8 @@
             @csrf
             @method('PUT')
 
-            <div class="mb-2 form-check" >
-                <label class="form-label" for="title">Title</label>
+            <div class="my-5 form-check" >
+                <label class="form-label" for="title">Titolo progetto:</label>
                 <input class="form-control @error('title') is-invalid @enderror" type="text" id="title" name="title" value="{{old('title') ?? $project->title}}">
                 @error('title')
                 <div class="invalid-feedback">
@@ -19,8 +19,8 @@
                 @enderror
             </div>
     
-            <div class="mb-2 form-check" >
-                <label class="form-label" for="repo">repo</label>
+            <div class="my-5 form-check" >
+                <label class="form-label" for="repo">Nome repo git:</label>
                 <input class="form-control @error('repo') is-invalid @enderror" type="text" id="repo" name="repo" value="{{old('repo') ?? $project->repo}}">
                 @error('repo')
                 <div class="invalid-feedback">
@@ -30,9 +30,9 @@
             </div>
 
 
-            <div class="mb-2 form-check" >
-                <label class="form-label" for="type_id">Categoria</label>
-                <select name="type_id" id="type_id" >
+            <div class="my-5 form-check" >
+                <label class="form-label" for="type_id">Categoria:</label>
+                <select class="ma-2" style="width: 200px; text-align: center; border-radius:4px;border:1px solid grey" name="type_id" id="type_id" >
                     <option value="">nessuna</option>
                     @foreach ($types as $type)
                         <option value="{{$type->id}}" {{$type->id == old('type_id', $project->type_id) ? 'selected' : ''}}>{{$type->name ?? old($type->name)}}</option>
@@ -46,22 +46,23 @@
             </div>
 
 
-            <div class="form-group">
-                <span>Technologia</span>
-
-                @foreach($technologies as $technology)
-                <div class="form-check">
-                    <input type="checkbox" id="technology-{{$technology->id}}" name="technologies[]" value="{{$technology->id}}" @checked($project->technologies->contains($technology))>
-                    <label for="technology-{{$technology->id}}">{{$technology->name}}</label>
+            <div class=" my-5 form-check form-group d-flex gap-3 align-items-center">
+                <label>Technologia:</label>
+                <div class="row">
+                    @foreach($technologies as $technology)
+                    <div class="form-check col-2">
+                        <input type="checkbox" id="technology-{{$technology->id}}" name="technologies[]" value="{{$technology->id}}" @checked($project->technologies->contains($technology))>
+                        <label for="technology-{{$technology->id}}">{{$technology->name}}</label>
+                    </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
             
 
     
-            <div class="mb-2 form-check" >
-                <label class="form-label" for="description">description</label>
-                <textarea class="form-control @error('description') is-invalid @enderror" type="text" id="description" name="description">{{old('description') ?? $project->description}}</textarea>
+            <div class="my-5 form-check" >
+                <label class="form-label" for="description">Descrizione:</label>
+                <textarea style="height: 250px" class="form-control @error('description') is-invalid @enderror" type="text" id="description" name="description">{{old('description') ?? $project->description}}</textarea>
                 @error('description')
                 <div class="invalid-feedback">
                     <em> {{$message}} </em>
@@ -69,8 +70,8 @@
                 @enderror
             </div>
     
-            <div class="mb-2 form-check" >
-                <label class="form-label" for="thumb">thumb</label>
+            <div class="my-5 form-check" >
+                <label class="form-label" for="thumb">Link immagine anteprima:</label>
                 <input class="form-control @error('thumb') is-invalid @enderror" type="text" id="thumb" name="thumb" value="{{old('thumb') ?? $project->thumb}}">
                 @error('thumb')
                 <div class="invalid-feedback">
