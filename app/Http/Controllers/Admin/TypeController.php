@@ -116,10 +116,11 @@ class TypeController extends Controller
         $formData = $request->all();
 
         $validator = Validator::make($formData, [
-            'name' => 'required',
+            'name' => 'required|max:255',
             'description' => 'required',
         ],[
             'name.required' => 'Questo campo è richiesto, non puoi lasciarlo vuoto',
+            'name.max' => 'Il nome deve contenere massimo :max caratteri',
             'description.required' => 'Questo campo è richiesto, non puoi lasciarlo vuoto',
         ])->validate();
 
