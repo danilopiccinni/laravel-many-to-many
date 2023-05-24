@@ -13,8 +13,8 @@
                       <div class="d-flex">
                           <span>Badge color: </span><div style="width: 50px; height : 50px ; background-color: {{ $technology->color }}"></div>
                       </div>
-                      <a href="{{ route('admin.types.edit', $technology) }}" class="card-link btn btn-primary">Modifica</a>
-                      <form action="{{route('admin.types.destroy', $technology)}}" method="POST">
+                      <a href="{{ route('admin.technologies.edit', $technology) }}" class="card-link btn btn-primary">Modifica</a>
+                      <form action="{{route('admin.technologies.destroy', $technology)}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger" type="submit">ELIMINA</button>

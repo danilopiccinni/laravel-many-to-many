@@ -74,7 +74,7 @@ class TechnologyController extends Controller
      */
     public function edit(Technology $technology)
     {
-        //
+       return view('admin.technologies.edit' , compact('technology'));
     }
 
     /**
@@ -86,7 +86,13 @@ class TechnologyController extends Controller
      */
     public function update(Request $request, Technology $technology)
     {
-        //
+        $formData = $request->all();
+
+        $technology->slug = Str::slug($formData['name'], '-');
+        
+        $technology->update($formData);
+
+        return redirect()->route('admin.technologies.show' , $technology);
     }
 
     /**
@@ -97,6 +103,8 @@ class TechnologyController extends Controller
      */
     public function destroy(Technology $technology)
     {
-        //
+        $technology->delete();
+
+        return redirect()->route('admin.technologies.index');
     }
 }
