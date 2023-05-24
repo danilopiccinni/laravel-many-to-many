@@ -4,6 +4,12 @@
 <section class="section-admin-index">
 
     <div class="my-5">
+
+      <div class="d-flex justify-content-center my-3">
+        <a class="btn btn-secondary my-3" href="{{route('admin.projects.create')}}">Crea nuovo progetto</a>
+
+      </div>
+
         <ul>
             @foreach ($projects as $project)
                 <li>
@@ -14,22 +20,19 @@
                             <img src="{{$project->thumb}}" class="img-fluid rounded-start" alt="...">
                           </div>
                           <div class="col-md-4 ">
-                            <div class="card-body">
-                              <span class="text-end">Titolo:</span>
-                              <h5 class="card-title text-center">{{ $project->title }}</h5>
-                              <span>Tecnologie: </span>
-                              @foreach($project->technologies as $tecnology)
-                                <p class="card-title text-center">{{ $tecnology->name}}</p>
-                              @endforeach
-                              <span>Tipologia:</span>
-                              <p class="text-center">{{$project->type?->name}}</p>
-
+                            <div class="card-body d-flex flex-column gap-5 ">
+                              <h2 class="card-title text-center">{{ $project->title }}</h2>
+                              <div class="d-flex gap-3 justify-content-center">
+                                @foreach($project->technologies as $tecnology)
+                                  <p class="card-title text-center"><em>{{ $tecnology->name}}</em></p>
+                                @endforeach
+                              </div>
+                              <h4 class="text-center">{{$project->type?->name}}</h4>
                             </div>
                           </div>
-                          <div class="col-md-4">
-                            <div class="card-body">
-                              <span>Descrizione: </span>
-                              <p class="card-text text-center">{{$project->description}}</p>
+                          <div class="col-md-4 ">
+                            <div class="card-body d-flex gap-3 justify-content-center">
+                              <p class="card-text">{{$project->description}}</p>
                             </div>
                           </div>
                         </div>
@@ -38,14 +41,7 @@
                 </li>
             @endforeach
         </ul>
-
     </div>
-
-    <a href="{{route('admin.projects.create')}}">Crea nuovo progetto</a>
-    
-    
-
-
 </section>
 
 @endsection
