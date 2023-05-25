@@ -10,7 +10,7 @@
               <div class="card-body">
                 <h5 class="card-title">{{$technology->name}}</h5>
                 <p class="card-text">{{$technology->description}}</p>
-                <div class="d-flex">
+                <div class="d-flex align-items-center gap-2">
                   <span>Badge color: </span><div style="width: 50px; height : 50px ; background-color: {{ $technology->color }}"></div>
                 </div>
               </div>
