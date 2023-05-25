@@ -16,18 +16,24 @@
 aside {
     height: 100%;
 
+    background-color: #efefef;
+    border: 2px double rgb(212, 211, 211);
+    border-radius: 6px;
+
     position: sticky;
     top: 100px;
-
+    
     li {
         list-style-type: none;
 
         &:last-child {
             border-radius: 0 0 12px 12px;
         }
+
     }
     
     .aside-title{
+        text-align: center;
         margin-bottom: 10px;
         font-size: 30px;
         font-weight: bolder;
