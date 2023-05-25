@@ -121,14 +121,16 @@ use App\Models\Technology;
                 <div class="inner-aside container">
                     <div class="list-group">
 
-                        <a href="{{route('admin.dashboard') }}" class="list-group-item list-group-item-action {{giveActive(route('admin.dashboard') )}}" aria-current="true">
-                            {{ __('Home') }}
-                        </a>
+                        <div class="list-group my-2">
+                            <a href="{{route('admin.dashboard') }}" class="list-group-item list-group-item-action {{giveActive(route('admin.dashboard') )}}" aria-current="true">{{ __('Home') }}</a>
+                        </div>
 
 
-                        <strong>Sezione Pogetti</strong>
-                        <a class="list-group-item list-group-item-action {{giveActive(route('admin.projects.create'))}}" href="{{route('admin.projects.create') }}"><i class="fa-solid fa-plus"></i> {{ __('Crea un nuovo') }}</a>
-                        <a class="list-group-item list-group-item-action {{giveActive(route('admin.projects.index'))}} " href="{{route('admin.projects.index') }}">{{ __('Lista Progetti') }}  ({{count($projects)}})</a>
+                        <strong class="my-2">Sezione Pogetti</strong>
+                        <div class="list-group">
+                            <a class="list-group-item list-group-item-action {{giveActive(route('admin.projects.create'))}}" href="{{route('admin.projects.create') }}"><i class="fa-solid fa-plus"></i> {{ __('Crea un nuovo') }}</a>
+                            <a class="list-group-item list-group-item-action {{giveActive(route('admin.projects.index'))}} " href="{{route('admin.projects.index') }}">{{ __('Lista Progetti') }}  ({{count($projects)}})</a>
+                        </div>
                         <ul>
                             @foreach($projects as $project)
                             <li class="nav-link">
@@ -138,9 +140,11 @@ use App\Models\Technology;
                             @endforeach
                         </ul>
 
-                        <strong>Sezione tipologia</strong>
-                        <a class="list-group-item list-group-item-action {{giveActive(route('admin.types.create'))}}" href="{{route('admin.types.create') }}"><i class="fa-solid fa-plus"></i> {{ __('Crea nuova tipologia') }}</a>
-                        <a class="list-group-item list-group-item-action {{giveActive(route('admin.types.index'))}}" href="{{ route('admin.types.index') }}">{{__('Lista tipologie')}} ({{count($types)}})</a>
+                        <strong class="my-2">Sezione tipologia</strong>
+                        <div class="list-group">
+                            <a class="list-group-item list-group-item-action {{giveActive(route('admin.types.create'))}}" href="{{route('admin.types.create') }}"><i class="fa-solid fa-plus"></i> {{ __('Crea nuova tipologia') }}</a>
+                            <a class="list-group-item list-group-item-action {{giveActive(route('admin.types.index'))}}" href="{{ route('admin.types.index') }}">{{__('Lista tipologie')}} ({{count($types)}})</a>
+                        </div>
                         <ul>
                             @foreach($types as $type)
                             <li class="nav-link">
@@ -149,9 +153,11 @@ use App\Models\Technology;
                             @endforeach
                         </ul>  
                         
-                        <strong>Sezione tecnologia</strong>
-                        <a class="list-group-item list-group-item-action {{giveActive(route('admin.technologies.create'))}}" href="{{route('admin.technologies.create') }}"><i class="fa-solid fa-plus"></i> {{ __('Crea nuova tecnologia') }}</a>
-                        <a class="list-group-item list-group-item-action {{giveActive(route('admin.technologies.index'))}}" href="{{ route('admin.technologies.index') }}">{{__('Lista tecnologie')}} ({{count($technologies)}})</a>
+                        <strong class="my-2">Sezione tecnologia</strong>
+                        <div class="list-group">
+                            <a class="list-group-item list-group-item-action {{giveActive(route('admin.technologies.create'))}}" href="{{route('admin.technologies.create') }}"><i class="fa-solid fa-plus"></i> {{ __('Crea nuova tecnologia') }}</a>
+                            <a class="list-group-item list-group-item-action {{giveActive(route('admin.technologies.index'))}}" href="{{ route('admin.technologies.index') }}">{{__('Lista tecnologie')}} ({{count($technologies)}})</a>
+                        </div>
                         <ul>
                             @foreach($technologies as $technology)
                             <li class="nav-link">
