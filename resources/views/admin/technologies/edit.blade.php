@@ -4,7 +4,7 @@
 
     <div class="container px-5 my-5" >
 
-        <h2 class="mb-5 text-center">Creazione nuova tecnologia</h2>
+        <h2 class="mb-5 text-center">Modifica tecnologia</h2>
 
         <form action="{{ route('admin.technologies.update' ,$technology) }}" method="POST">
     
