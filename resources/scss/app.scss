@@ -14,9 +14,7 @@
 //-------------------------------------------
 // aside
 aside {
-    // border: 1px double grey;
     height: 100%;
-
 
     position: sticky;
     top: 100px;
@@ -33,16 +31,24 @@ aside {
         margin-bottom: 10px;
         font-size: 30px;
         font-weight: bolder;
-        // border: 1px solid grey;
+
     }
     .inner-aside {
         height: 500px;
-        overflow:auto;
-
+        overflow: auto;
 
         &::-webkit-scrollbar {
-        display: none;
-        }
+            width: 8px;
+            }
+            &::-webkit-scrollbar-track {
+            background-color: #ccc;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.257);
+            border-radius: 10px;
+            }
+            &::-webkit-scrollbar-thumb {
+            background-color: #838688;
+            border-radius: 10px;
+            }
     }
 
 }
