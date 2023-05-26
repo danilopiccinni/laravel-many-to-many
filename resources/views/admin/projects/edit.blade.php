@@ -4,7 +4,7 @@
 
     <div class="container px-5 my-5" >
 
-        <form action="{{ route('admin.projects.update', $project) }}" method="POST">
+        <form action="{{ route('admin.projects.update', $project) }}" method="POST" enctype="multipart/form-data">
     
             @csrf
             @method('PUT')
@@ -81,7 +81,7 @@
     
             <div class="my-5 form-check" >
                 <label class="form-label" for="thumb">Link immagine anteprima:</label>
-                <input class="form-control @error('thumb') is-invalid @enderror" type="text" id="thumb" name="thumb" value="{{old('thumb') ?? $project->thumb}}">
+                <input class="form-control @error('thumb') is-invalid @enderror" type="file" id="thumb" name="thumb" >
                 @error('thumb')
                 <div class="invalid-feedback">
                     <em> {{$message}} </em>

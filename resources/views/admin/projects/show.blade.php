@@ -18,7 +18,7 @@
             <div class="image py-5">
                 <div class="container-fliud py-5">
                     <div class="col-10 offset-1">
-                        <div class="container-image" style="background-image: url({{$project->thumb}})">
+                        <div class="container-image" style="background-image: url({{ asset('storage/' . $project->thumb)}})">
                             <h1>{{$project->title}}</h1>
                             <div class="opacity"></div>
                             {{-- <img class="inner-bottom-svg" src="{{Vite::asset('resources/img/wave.svg')}}" alt=""> --}}

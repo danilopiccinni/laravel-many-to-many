@@ -62,8 +62,6 @@ class ProjectController extends Controller
 
             $path = Storage::put('project_image', $request->thumb);
 
-
-
             $formData['thumb'] = $path;
         }
 
@@ -119,7 +117,18 @@ class ProjectController extends Controller
 
         $formData = $request->all();
 
+        if($request->hasFile('thumb')) {
+
+            Storage::delete($project->thumb);
+
+            $path = Storage::put('project_image', $request->thumb);
+
+            $formData['thumb'] = $path;
+        }
+
+
         $project->slug = Str::slug($formData['title'], '-');
+
         
         $project->update($formData);
 
@@ -146,9 +155,13 @@ class ProjectController extends Controller
         return redirect()->route('admin.projects.index');
     }
 
+
+
     public function contact() {
         return view('admin.contact');
     }
+
+
 
 
     private function validatorDataForm($request) {
@@ -158,7 +171,7 @@ class ProjectController extends Controller
             'title' => 'required|max:255',
             'repo' => 'required|max:255',
             'description' => 'required|max:1000',
-            // 'thumb' => 'required|max:500|active_url|url',
+            'thumb' => 'required|image|max:8000',
             'type_id' => 'nullable|exists:types,id',
             'technologies' => 'exists:technologies,id',
         ],[
@@ -171,10 +184,8 @@ class ProjectController extends Controller
             'description.max' => 'Raggiunta lunghezza massima di caratteri, massimo :max',
             'languages.required' => 'Questo campo è richiesto, non puoi lasciarlo vuoto',
             'languages.max' => 'Raggiunta lunghezza massima di caratteri, massimo :max',
-            // 'thumb.required' => 'Questo campo è richiesto, non puoi lasciarlo vuoto',
-            // 'thumb.max' => 'Raggiunta lunghezza massima di caratteri, massimo :max',
-            // 'thumb.active_url' => 'Questo link per non è funzionante',
-            // 'thumb.url' => 'Non hai inserito un link, (Https://.... oppure Http://)',
+            'thumb.required' => 'Questo campo è richiesto, non puoi lasciarlo vuoto',
+            'thumb.max' => 'Raggiunta grandezza massima del file, massimo :maxkb',
             'type_id.required.exists' => 'Inserisci una tipologia esistente',
             'technologies.exists' => 'insrisci una tipologia esistente'
 

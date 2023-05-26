@@ -68,7 +68,7 @@
     
             <div class="my-5 form-check" >
                 <label class="form-label" for="thumb">Link immagine anteprima:</label>
-                <input class="form-control @error('thumb') is-invalid @enderror" type="file" id="thumb" name="thumb" value="{{old('thumb')}}">
+                <input class="form-control @error('thumb') is-invalid @enderror" type="file" id="thumb" name="thumb" >
                 @error('thumb')
                 <div class="invalid-feedback">
                     <em> {{$message}} </em>
