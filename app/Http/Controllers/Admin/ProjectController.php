@@ -149,7 +149,7 @@ class ProjectController extends Controller
             'description' => 'required|max:1000',
             'thumb' => 'required|max:500|active_url|url',
             'type_id' => 'nullable|exists:types,id',
-            'tecnologies' => 'exists:tecnologies,id'
+            'technologies' => 'exists:technologies,id',
         ],[
             'title.required' => 'Questo campo è richiesto, non puoi lasciarlo vuoto',
             'title.max' => 'Raggiunta lunghezza massima di caratteri, massimo :max',

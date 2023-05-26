@@ -60,7 +60,7 @@
                     </div>
                     @endforeach
                 </div>
-                @error('technologies[]')
+                @error('technologies')
                 <div class="invalid-feedback">
                     <em> {{$message}} </em>
                 </div>
