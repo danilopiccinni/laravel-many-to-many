@@ -37,7 +37,7 @@
 
                 <div>
                     <strong>Tecnologia:</strong>
-                    @foreach ($technologies as $technology)
+                    @foreach ($project->technologies as $technology)
                     <span class="badge" style=" background-color: {{$technology->color}}">{{$technology->name}}</span>
                     @endforeach
                 </div>
