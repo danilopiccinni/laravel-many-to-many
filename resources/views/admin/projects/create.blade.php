@@ -33,7 +33,7 @@
                 <select class="ms-2" style="width: 200px; text-align: center; border-radius:4px;border:1px solid grey" name="type_id" id="type_id">
                     <option value="">nessuna</option>
                     @foreach ($types as $type)
-                        <option value="{{$type->id}}" >{{$type->name}}</option>
+                        <option value="{{$type->id}}" {{old('type_id') == $type->id ? 'selected' : ''}}>{{$type->name}} </option>
                     @endforeach
                 </select>
                 @error('repo')
@@ -48,7 +48,7 @@
                 <div class="row">
                     @foreach($technologies as $technology)
                     <div class="form-check col-2">
-                        <input type="checkbox" id="technology-{{$technology->id}}" name="technologies[]" value="{{$technology->id}}">
+                        <input type="checkbox" id="technology-{{$technology->id}}" name="technologies[]" value="{{$technology->id}}" @checked(in_array($technology->id, old('technologies', [])))>
                         <label for="technology-{{$technology->id}}">{{$technology->name}}</label>
                     </div>
                     @endforeach

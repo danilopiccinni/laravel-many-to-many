@@ -149,6 +149,7 @@ class ProjectController extends Controller
             'description' => 'required|max:1000',
             'thumb' => 'required|max:500|active_url|url',
             'type_id' => 'nullable|exists:types,id',
+            'tecnologies' => 'exists:tecnologies,id'
         ],[
             'title.required' => 'Questo campo è richiesto, non puoi lasciarlo vuoto',
             'title.max' => 'Raggiunta lunghezza massima di caratteri, massimo :max',
@@ -164,6 +165,7 @@ class ProjectController extends Controller
             'thumb.active_url' => 'Questo link per non è funzionante',
             'thumb.url' => 'Non hai inserito un link, (Https://.... oppure Http://)',
             'type_id.required.exists' => 'Inserisci una tipologia esistente',
+            'technologies.exists' => 'insrisci una tipologia esistente'
 
 
         ])->validate();

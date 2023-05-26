@@ -51,11 +51,20 @@
                 <div class="row">
                     @foreach($technologies as $technology)
                     <div class="form-check col-2">
+                        @if ($errors->any())
+                        <input type="checkbox" id="technology-{{$technology->id}}" name="technologies[]" value="{{$technology->id}}" @checked(in_array($technology->id, old('technologies', [])))>
+                        @else
                         <input type="checkbox" id="technology-{{$technology->id}}" name="technologies[]" value="{{$technology->id}}" @checked($project->technologies->contains($technology))>
+                        @endif
                         <label for="technology-{{$technology->id}}">{{$technology->name}}</label>
                     </div>
                     @endforeach
                 </div>
+                @error('technologies[]')
+                <div class="invalid-feedback">
+                    <em> {{$message}} </em>
+                </div>
+                @enderror
             </div>
             
 
