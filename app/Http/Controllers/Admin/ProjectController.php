@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Support\Str;
@@ -55,8 +56,18 @@ class ProjectController extends Controller
         $newProject->type_id = $formData['type_id'];
         $newProject->repo = $formData['repo'];
         $newProject->description = $formData['description'];
-        $newProject->thumb = $formData['thumb'];
         $newProject->slug = Str::slug($formData['title'], '-');
+
+        if($request->hasFile('thumb')) {
+
+            $path = Storage::put('project_image', $request->thumb);
+
+
+
+            $formData['thumb'] = $path;
+        }
+
+        $newProject->thumb = $formData['thumb'];
 
         $newProject->save();
 
@@ -147,7 +158,7 @@ class ProjectController extends Controller
             'title' => 'required|max:255',
             'repo' => 'required|max:255',
             'description' => 'required|max:1000',
-            'thumb' => 'required|max:500|active_url|url',
+            // 'thumb' => 'required|max:500|active_url|url',
             'type_id' => 'nullable|exists:types,id',
             'technologies' => 'exists:technologies,id',
         ],[
@@ -160,10 +171,10 @@ class ProjectController extends Controller
             'description.max' => 'Raggiunta lunghezza massima di caratteri, massimo :max',
             'languages.required' => 'Questo campo è richiesto, non puoi lasciarlo vuoto',
             'languages.max' => 'Raggiunta lunghezza massima di caratteri, massimo :max',
-            'thumb.required' => 'Questo campo è richiesto, non puoi lasciarlo vuoto',
-            'thumb.max' => 'Raggiunta lunghezza massima di caratteri, massimo :max',
-            'thumb.active_url' => 'Questo link per non è funzionante',
-            'thumb.url' => 'Non hai inserito un link, (Https://.... oppure Http://)',
+            // 'thumb.required' => 'Questo campo è richiesto, non puoi lasciarlo vuoto',
+            // 'thumb.max' => 'Raggiunta lunghezza massima di caratteri, massimo :max',
+            // 'thumb.active_url' => 'Questo link per non è funzionante',
+            // 'thumb.url' => 'Non hai inserito un link, (Https://.... oppure Http://)',
             'type_id.required.exists' => 'Inserisci una tipologia esistente',
             'technologies.exists' => 'insrisci una tipologia esistente'
 
