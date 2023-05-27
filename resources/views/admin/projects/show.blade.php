@@ -35,15 +35,27 @@
             
             <div class="container">
 
-                <div>
+                <p>
                     <strong>Tecnologia:</strong>
                     @foreach ($project->technologies as $technology)
-                    <span class="badge" style=" background-color: {{$technology->color}}">{{$technology->name}}</span>
+                    <span class="badge" style=" background-color: {{$technology->color}}">
+                        <a class="nav-link" href="{{route('admin.technologies.show', $technology)}}">
+                            {{$technology->name}}
+                        </a>
+                    </span>
                     @endforeach
-                </div>
+                </p>
 
+                <p>
+                    <strong>Tipologia:</strong>
 
-                <p>Tipologia: {{$project->type?->name}}</p>
+                    <span class="badge rounded-pill text-bg-info">
+                        <a class="nav-link" href="{{ route('admin.types.show', $project->type) }}">
+                            {{$project->type?->name}}
+                        </a>
+                    </span>
+
+                </p>
 
                 <p>
                     {{$project->description}}{{$project->description}}{{$project->description}}

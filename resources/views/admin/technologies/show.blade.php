@@ -7,11 +7,21 @@
         <div class="row">
           <div class="col-12">
             <div class="card" >
-              <div class="card-body">
+              <div class="card-body d-flex flex-column gap-3">
                 <h5 class="card-title">{{$technology->name}}</h5>
                 <p class="card-text">{{$technology->description}}</p>
                 <div class="d-flex align-items-center gap-2">
                   <span>Badge color: </span><div style="width: 50px; height : 50px ; background-color: {{ $technology->color }}"></div>
+                </div>
+                <div>
+                  <strong>Progetti correlati: </strong>
+                  @foreach($technology->projects as $project)
+                    <span class="badge rounded-pill text-bg-secondary">
+                      <a class="nav-link" href="{{ route('admin.projects.show', $project) }}">
+                        {{ $project->title }}
+                      </a>
+                      </span>
+                  @endforeach
                 </div>
               </div>
             </div>
@@ -22,9 +32,7 @@
           <a href="{{ route('admin.technologies.edit', $technology) }}" class="card-link btn btn-primary">Modifica</a>
 
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Elimina
-          </button>
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Elimina</button>
         </div>
               
     </div>

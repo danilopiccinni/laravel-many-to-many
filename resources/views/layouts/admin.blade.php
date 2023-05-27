@@ -116,7 +116,7 @@ use App\Models\Technology;
     
     <main>
         <div class="aside d-flex gap-3 mt-5">
-            <aside class="ms-3 col-2">
+            <aside class="ms-3 col-2 ">
                 <div class="aside-title">Navigazione</div>
                 <div class="inner-aside container">
                     <div class="list-group">
@@ -133,7 +133,7 @@ use App\Models\Technology;
                         </div>
                         <ul>
                             @foreach($projects as $project)
-                            <li class="nav-link">
+                            <li class="list-group">
                                 <a class="list-group-item list-group-item-action {{giveActive(route('admin.projects.show', $project))}}" href="{{ route('admin.projects.show', $project) }}">{{$project->title}}</a>
                                 
                             </li>
@@ -171,7 +171,7 @@ use App\Models\Technology;
                 </div>       
             </aside>
 
-            <div class="col-9">
+            <div class="cont-content col-9 flex-shrink-1">
                 @yield('content')
             </div>
 
